@@ -31,7 +31,7 @@ public class ListExercises extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }
-
+    //Add exercises here
     private void initData() {
         exerciseList.add(new Exercise(R.drawable.weight, "easy pose"));
         exerciseList.add(new Exercise(R.drawable.weightlifting, "easy pose1"));

@@ -1,6 +1,7 @@
 package com.example.hafiz.fitnessplan.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.example.hafiz.fitnessplan.Interface.ItemClickListener;
 import com.example.hafiz.fitnessplan.Model.Exercise;
 import com.example.hafiz.fitnessplan.R;
+import com.example.hafiz.fitnessplan.ViewExercises;
 
 import java.util.List;
 
@@ -73,8 +75,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position) {
-                //call new activity
-                Toast.makeText(context,"Click to" +exerciseList.get(position).getName(), Toast.LENGTH_LONG).show();
+                //Get the corresponding values such as images and title from the clicked exercises
+               // Toast.makeText(context,"Click to" +exerciseList.get(position).getName(), Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(context, ViewExercises.class);
+                intent.putExtra("image_id",exerciseList.get(position).getImage_id());
+                intent.putExtra("name", exerciseList.get(position).getName());
+                context.startActivity(intent);
             }
         });
     }
