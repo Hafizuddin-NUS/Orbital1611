@@ -23,6 +23,7 @@
         <activity android:name=".gui.HomeGym" />
         <activity android:name=".gui.ListHome" />
         <activity android:name=".gui.SettingPage" />
+        <activity android:name=".gui.ViewExercises" />
         <activity android:name=".gui.EditExerciseActivity" />
         <activity android:name=".gui.ExerciseListingActivity"
             android:windowSoftInputMode="adjustPan">

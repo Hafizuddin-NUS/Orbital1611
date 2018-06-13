@@ -10,7 +10,8 @@ import com.budgebars.rotelle.R;
 
 public class ListHome extends AppCompatActivity {
 
-    Button btnabs;
+    Button btnabs,btnstrength;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,24 @@ public class ListHome extends AppCompatActivity {
         setContentView(R.layout.activity_list_home);
 
         btnabs = (Button) findViewById(R.id.btnabs);
+        btnstrength = (Button) findViewById(R.id.btnstrength);
 
+        btnabs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListHome.this, ViewExercises.class);
+                intent.putExtra("position", 1);
+                startActivity(intent);
+            }
+        });
+        btnstrength.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListHome.this, ViewExercises.class);
+                intent.putExtra("position", 2);
+                startActivity(intent);
+            }
+        });
 
 
 

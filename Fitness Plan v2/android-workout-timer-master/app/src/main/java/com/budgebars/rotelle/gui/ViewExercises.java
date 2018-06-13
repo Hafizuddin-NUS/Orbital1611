@@ -1,17 +1,18 @@
-package com.example.hafiz.fitnessplan;
+package com.budgebars.rotelle.gui;
 
-import android.media.Image;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hafiz.fitnessplan.Database.FitnessPlanDB;
-import com.example.hafiz.fitnessplan.Utils.Common;
+import com.budgebars.rotelle.Database.FitnessPlanDB;
+import com.budgebars.rotelle.R;
+import com.budgebars.rotelle.Utils.Common;
+
 
 public class ViewExercises extends AppCompatActivity {
 
@@ -32,6 +33,7 @@ public class ViewExercises extends AppCompatActivity {
         setContentView(R.layout.activity_view_exercises);
 
         fitnessPlanDB = new FitnessPlanDB(this);
+        int value = getIntent().getIntExtra("position", 1);
 
         timer = (TextView)findViewById(R.id.timer);
         title = (TextView)findViewById(R.id.title);
@@ -82,12 +84,18 @@ public class ViewExercises extends AppCompatActivity {
 
         if(getIntent() != null)
         {
-            image_id = getIntent().getIntExtra("image_id",-1);
-            name = getIntent().getStringExtra("name");
 
             //Set resource to the following clicked exercise
-            detail_image.setImageResource(R.drawable.fitness);
-            title.setText(name);
+            if(value ==1)
+            {
+                detail_image.setImageResource(R.drawable.fitness);
+                title.setText("testing 1");
+            }
+            else if(value ==2)
+            {
+                detail_image.setImageResource(R.drawable.fitness);
+                title.setText("testing 2");
+            }
         }
 
 
