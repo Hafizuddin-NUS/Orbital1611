@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hafiz.fitnessplan.Database.FitnessPlanDB;
+import com.example.hafiz.fitnessplan.Utils.Common;
+
 public class ViewExercises extends AppCompatActivity {
 
     int image_id;
@@ -21,10 +24,14 @@ public class ViewExercises extends AppCompatActivity {
 
     Boolean isRunning = false;
 
+    FitnessPlanDB fitnessPlanDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_exercises);
+
+        fitnessPlanDB = new FitnessPlanDB(this);
 
         timer = (TextView)findViewById(R.id.timer);
         title = (TextView)findViewById(R.id.title);
@@ -37,7 +44,19 @@ public class ViewExercises extends AppCompatActivity {
                 if(!isRunning)
                 {
                     btnStart.setText("Done");
-                    new CountDownTimer(20000, 1000) {
+
+                    int timeLimit = 0;
+                    if(fitnessPlanDB.getSettingMode() == 0)
+                        timeLimit = Common.TIME_LIMIT_EASY;
+                    else if(fitnessPlanDB.getSettingMode() == 1)
+                            timeLimit = Common.TIME_LIMIT_MEDIUM;
+                    else if(fitnessPlanDB.getSettingMode() == 2)
+                        timeLimit = Common.TIME_LIMIT_HARD;
+
+
+
+
+                    new CountDownTimer(timeLimit, 1000) {
                         @Override
                         public void onTick(long l) {
                             timer.setText(""+l/1000);

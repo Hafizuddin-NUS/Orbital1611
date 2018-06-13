@@ -18,7 +18,13 @@
         </activity>
         <activity android:name=".Main2Activity" />
         <activity android:name=".ListExercises" />
-        <activity android:name=".ViewExercises"></activity>
+        <activity android:name=".ViewExercises" />
+        <activity android:name=".SettingPage" />
+
+        <receiver android:name=".AlarmNotificationReceiver" />
+
+        <activity android:name=".HomeGym" />
+        <activity android:name=".ListHome"></activity>
     </application>
 
 </manifest>

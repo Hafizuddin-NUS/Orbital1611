@@ -15,7 +15,8 @@
         android:orientation="horizontal"
         android:padding="16dp"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/ex_img"

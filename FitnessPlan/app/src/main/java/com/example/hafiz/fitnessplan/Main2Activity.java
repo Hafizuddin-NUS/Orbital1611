@@ -16,10 +16,20 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         btnExercises = (Button)findViewById(R.id.btnExercises);
+        btnSettings = (Button)findViewById(R.id.btnSettings);
+
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Main2Activity.this, SettingPage.class);
+                startActivity(intent);
+            }
+        });
+
         btnExercises.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Main2Activity.this, ListExercises.class);
+                Intent intent = new Intent(Main2Activity.this, HomeGym.class);
                 startActivity(intent);
             }
         });
