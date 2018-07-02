@@ -32,7 +32,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-task pmd (type: Pmd) {
+task pmd(type: Pmd) {
 
     description 'Run pmd'
     group 'verification'

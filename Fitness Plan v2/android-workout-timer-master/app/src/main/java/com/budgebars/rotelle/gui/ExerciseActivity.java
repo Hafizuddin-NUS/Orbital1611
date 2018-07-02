@@ -68,38 +68,7 @@ public class ExerciseActivity extends AppCompatActivity {
         }
     });
 
-    Button emailExerciseButton = this.findViewById(R.id.EmailExerciseButton);
-    emailExerciseButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(final View view) {
-        ExerciseActivity.this.startEmailIntent();
-      }
-    });
   }
 
-  private void startEmailIntent() {
-    Intent emailIntent = new Intent(Intent.ACTION_SEND);
-    emailIntent.setType(ExerciseActivity.INTENT_TYPE);
-    emailIntent.putExtra(Intent.EXTRA_SUBJECT, this.exercise.name());
 
-    File requestFile = this.exerciseFile.source();
-    Uri fileUri;
-    try {
-      fileUri = FileProvider.getUriForFile(this,
-          ExerciseActivity.FILE_PROVIDER_AUTHORITY, requestFile);
-    } catch (IllegalArgumentException e) {
-      throw new RuntimeException(e);
-    }
-
-    emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-    emailIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
-
-    Intent chooser = Intent.createChooser(emailIntent, ExerciseActivity.INTENT_TITLE);
-
-    if (emailIntent.resolveActivity(this.getPackageManager()) != null) {
-      this.startActivity(chooser);
-    } else {
-      Toast.makeText(this, ExerciseActivity.NO_APP_MESSAGE, Toast.LENGTH_SHORT).show();
-    }
-  }
 }

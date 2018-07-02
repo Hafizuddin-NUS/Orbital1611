@@ -17,7 +17,6 @@ import com.budgebars.rotelle.Utils.Common;
 public class ViewExercises extends AppCompatActivity {
 
     int image_id;
-    String name;
 
     TextView timer,title;
     ImageView detail_image;
@@ -33,7 +32,9 @@ public class ViewExercises extends AppCompatActivity {
         setContentView(R.layout.activity_view_exercises);
 
         fitnessPlanDB = new FitnessPlanDB(this);
-        int value = getIntent().getIntExtra("position", 1);
+        int value = getIntent().getIntExtra("position", 0);
+        int list = getIntent().getIntExtra("list", 1);
+        String name = getIntent().getStringExtra("name");
 
         timer = (TextView)findViewById(R.id.timer);
         title = (TextView)findViewById(R.id.title);
@@ -54,8 +55,6 @@ public class ViewExercises extends AppCompatActivity {
                             timeLimit = Common.TIME_LIMIT_MEDIUM;
                     else if(fitnessPlanDB.getSettingMode() == 2)
                         timeLimit = Common.TIME_LIMIT_HARD;
-
-
 
 
                     new CountDownTimer(timeLimit, 1000) {
@@ -82,22 +81,65 @@ public class ViewExercises extends AppCompatActivity {
             }
         });
 
+
         if(getIntent() != null)
         {
+            switch(list){
+                case 1: if(value ==0)
+                        {
+                            detail_image.setImageResource(R.drawable.abs);
+                            title.setText(name);
+                        }
+                        else if(value ==1)
+                        {
+                            detail_image.setImageResource(R.drawable.abs);
+                            title.setText(name);
+                        }
+                        else if(value ==2)
+                        {
+                            detail_image.setImageResource(R.drawable.abs);
+                            title.setText(name);
+                        }
+                        break;
+                case 2: if(value ==0)
+                        {
+                            detail_image.setImageResource(R.drawable.fitness);
+                            title.setText(name);
+                        }
+                        else if(value ==1)
+                        {
+                            detail_image.setImageResource(R.drawable.fitness);
+                            title.setText(name);
+                        }
+                        else if(value ==2)
+                        {
+                            detail_image.setImageResource(R.drawable.fitness);
+                            title.setText(name);
+                        }
+                            break;
+                case 3: if(value ==0)
+                        {
+                            detail_image.setImageResource(R.drawable.cardio);
+                            title.setText(name);
+                        }
+                        else if(value ==1)
+                        {
+                            detail_image.setImageResource(R.drawable.cardio);
+                            title.setText(name);
+                        }
+                        else if(value ==2)
+                        {
+                            detail_image.setImageResource(R.drawable.cardio);
+                            title.setText(name);
+                        }
+                            break;
+            }
 
-            //Set resource to the following clicked exercise
-            if(value ==1)
-            {
-                detail_image.setImageResource(R.drawable.fitness);
-                title.setText("testing 1");
-            }
-            else if(value ==2)
-            {
-                detail_image.setImageResource(R.drawable.fitness);
-                title.setText("testing 2");
-            }
         }
 
 
+
     }
+
+
 }

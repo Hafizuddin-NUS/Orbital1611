@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/back2"
     tools:context="com.budgebars.rotelle.gui.ExerciseActivity">
 
     <ListView
@@ -22,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/edit_exercise_label"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle"/>
 
         <Button
@@ -29,14 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/start_exercise_label"
+            android:textColor="#000000"
             style="?android:attr/buttonBarButtonStyle"/>
 
-        <Button
-            android:id="@+id/EmailExerciseButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/email_label"
-            style="?android:attr/buttonBarButtonStyle"/>
 
     </LinearLayout>
 

@@ -11,10 +11,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".gui.Main2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -24,27 +25,29 @@
         <activity android:name=".gui.ListHome" />
         <activity android:name=".gui.SettingPage" />
         <activity android:name=".gui.ViewExercises" />
+        <activity android:name=".gui.RecommendedList"></activity>
         <activity android:name=".gui.EditExerciseActivity" />
-        <activity android:name=".gui.ExerciseListingActivity"
+        <activity
+            android:name=".gui.ExerciseListingActivity"
             android:windowSoftInputMode="adjustPan">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.OPENABLE" />
+
                 <data android:scheme="file" />
                 <data android:mimeType="*/*" />
                 <data android:pathPattern=".*\\.exercise" />
                 <data android:host="*" />
             </intent-filter>
-
         </activity>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.budgebars.rotelle.fileprovider"
-            android:grantUriPermissions="true"
-            android:exported="false">
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
