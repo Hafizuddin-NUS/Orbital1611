@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rotelle</string>
+    <string name="app_name">Fitness Plan</string>
     <string name="all_purpose_button_label">Create Exercise.</string>
     <string name="start_timer_label">Start Exercise</string>
     <string name="pause_timer_label">Pause Exercise</string>
