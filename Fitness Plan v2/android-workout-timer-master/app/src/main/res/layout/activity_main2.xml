@@ -11,40 +11,53 @@
         android:id="@+id/btnExercises"
         android:layout_width="147dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="212dp"
         android:text="Recommanded Exercises"
-        app:layout_constraintBottom_toTopOf="@+id/btnCalender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSettings"
-        android:layout_width="147dp"
+        android:layout_width="284dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="Settings"
-        app:layout_constraintBottom_toTopOf="@+id/btnCalender"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.261"
-        app:layout_constraintStart_toEndOf="@+id/btnExercises"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnCalender"
-        android:layout_width="313dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="149dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="168dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Calender"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnSettings"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toStartOf="@+id/btnExercises" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSettings"
+        app:layout_constraintEnd_toEndOf="@+id/btnExercises"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btnExercises"
+        app:layout_constraintTop_toBottomOf="@+id/btnExercises"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnippt"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Trial IPPT"
+        app:layout_constraintEnd_toEndOf="@+id/btnCalender"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnCalender"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalender" />
 
 </android.support.constraint.ConstraintLayout>
