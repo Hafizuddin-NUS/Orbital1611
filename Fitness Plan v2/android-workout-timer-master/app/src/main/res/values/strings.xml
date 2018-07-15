@@ -17,4 +17,13 @@
     <string name="move_up_content_description">Moves up one interval.</string>
     <string name="move_down_content_description">Moves down one interval.</string>
     <string name="timer_finished_label">Done.</string>
+    <string name="action_search_text">Search</string>
+    <string name="account_settings_text">Account Settings</string>
+    <string name="log_out">Log Out</string>
+    <string name="bottom_home_text">Home</string>
+    <string name="notification_text">Notification</string>
+    <string name="bottom_ac_text">Account</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
