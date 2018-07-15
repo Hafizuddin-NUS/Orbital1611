@@ -24,6 +24,12 @@
     <string name="notification_text">Notification</string>
     <string name="bottom_ac_text">Account</string>
 
+    <string-array name="gender">
+        <item>Please select a Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

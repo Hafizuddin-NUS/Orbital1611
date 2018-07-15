@@ -1,5 +1,7 @@
 package com.budgebars.rotelle.gui;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -34,7 +36,7 @@ public class ViewExercises extends AppCompatActivity {
         fitnessPlanDB = new FitnessPlanDB(this);
         int value = getIntent().getIntExtra("position", 0);
         int list = getIntent().getIntExtra("list", 1);
-        String name = getIntent().getStringExtra("name");
+        final String name = getIntent().getStringExtra("name");
 
         timer = (TextView)findViewById(R.id.timer);
         title = (TextView)findViewById(R.id.title);
@@ -66,6 +68,17 @@ public class ViewExercises extends AppCompatActivity {
                         @Override
                         public void onFinish() {
                             Toast.makeText(ViewExercises.this, "Finish!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ViewExercises.this, HomeGym.class);
+
+                            //save String for workout done
+                            SharedPreferences preferences = getSharedPreferences("workout", getApplicationContext().MODE_PRIVATE);
+                            SharedPreferences.Editor editor = getSharedPreferences("workout", MODE_PRIVATE).edit();
+
+                            String workout_done = preferences.getString("names","Exercise Done: ");
+                            workout_done = workout_done + name + ", ";
+                            editor.putString("names", workout_done);
+                            editor.commit();
+                            startActivity(intent);
                             finish();
                         }
                     }.start();

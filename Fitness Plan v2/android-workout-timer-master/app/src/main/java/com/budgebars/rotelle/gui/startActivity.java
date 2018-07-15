@@ -171,6 +171,12 @@ public class startActivity extends AppCompatActivity {
                 startActivity(settingsIntent);
 
                 return true;
+            case R.id.exercise_settings:
+
+                Intent exerciseIntent = new Intent(startActivity.this, SettingPage.class);
+                startActivity(exerciseIntent);
+
+                return true;
 
 
             default:

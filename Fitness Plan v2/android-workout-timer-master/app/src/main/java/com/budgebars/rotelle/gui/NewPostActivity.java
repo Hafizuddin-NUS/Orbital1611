@@ -1,6 +1,7 @@
 package com.budgebars.rotelle.gui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -49,6 +50,7 @@ public class NewPostActivity extends AppCompatActivity {
 
     private Uri postImageUri = null;
     private Bitmap compressedImageFile;
+    private String FinalDesc;
 
     private StorageReference storageReference;
     private FirebaseFirestore firebaseFirestore;
@@ -78,6 +80,9 @@ public class NewPostActivity extends AppCompatActivity {
         newPostProgress = findViewById(R.id.new_post_progress);
         newPostProgress.setVisibility(View.INVISIBLE);
 
+        SharedPreferences preferences = getSharedPreferences("workout", getApplicationContext().MODE_PRIVATE);
+        FinalDesc = preferences.getString("names","Exercise Done: ");
+
         newPostImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +101,7 @@ public class NewPostActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 final String desc = newPostDesc.getText().toString();
+                FinalDesc = desc + " ---*" + FinalDesc +"*";
 
                 if(!TextUtils.isEmpty(desc) && postImageUri != null){
 
@@ -161,7 +167,7 @@ public class NewPostActivity extends AppCompatActivity {
                                         Map<String, Object> postMap = new HashMap<>();
                                         postMap.put("image_url", downloadUri);
                                         postMap.put("image_thumb", downloadthumbUri);
-                                        postMap.put("desc", desc);
+                                        postMap.put("desc", FinalDesc);
                                         postMap.put("user_id", current_user_id);
                                         postMap.put("timestamp", FieldValue.serverTimestamp());
 
@@ -170,6 +176,9 @@ public class NewPostActivity extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<DocumentReference> task) {
 
                                                 if(task.isSuccessful()){
+
+                                                    SharedPreferences.Editor editor = getSharedPreferences("workout", MODE_PRIVATE).edit();
+                                                    editor.clear().commit();
 
                                                     Toast.makeText(NewPostActivity.this, "Post was added", Toast.LENGTH_LONG).show();
                                                     Intent mainIntent = new Intent(NewPostActivity.this, startActivity.class);

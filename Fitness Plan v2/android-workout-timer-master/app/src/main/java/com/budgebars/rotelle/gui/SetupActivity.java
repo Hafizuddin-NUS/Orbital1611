@@ -14,9 +14,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -49,6 +53,7 @@ public class SetupActivity extends AppCompatActivity {
     private Uri mainImageURI = null;
 
     private String user_id;
+    private String gender;
 
     private boolean isChanged = false;
 
@@ -56,6 +61,7 @@ public class SetupActivity extends AppCompatActivity {
     private Button setupBtn;
     private EditText setupAge;
     private ProgressBar setupProgress;
+    private TextView setupGender;
 
     private StorageReference storageReference;
     private FirebaseAuth firebaseAuth;
@@ -84,9 +90,33 @@ public class SetupActivity extends AppCompatActivity {
         setupAge = findViewById(R.id.age);
         setupBtn = findViewById(R.id.save_Acc_settings);
         setupProgress = findViewById(R.id.setupbar2);
+        setupGender = findViewById(R.id.gender_user);
 
         setupProgress.setVisibility(View.VISIBLE);
         setupBtn.setEnabled(false);
+
+        Spinner mySpinner = (Spinner) findViewById(R.id.gender);
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(SetupActivity.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.gender));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mySpinner.setAdapter(myAdapter);
+
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i == 1) {
+                    gender = "Male";
+                } else if (i == 2) {
+                    gender = "Female";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -99,11 +129,13 @@ public class SetupActivity extends AppCompatActivity {
                         String name = task.getResult().getString("name");
                         String image = task.getResult().getString("image");
                         String age = task.getResult().getString("age");
+                        String gender1 = task.getResult().getString("gender");
 
                         mainImageURI = Uri.parse(image);
 
                         setupName.setText(name);
                         setupAge.setText(age);
+                        setupGender.setText(gender1);
 
                         RequestOptions placeholderRequest = new RequestOptions();
                         placeholderRequest.placeholder(R.drawable.default_image);
@@ -220,6 +252,8 @@ public class SetupActivity extends AppCompatActivity {
 
         });
 
+
+
     }
 
     private void storeFirestore(@NonNull Task<UploadTask.TaskSnapshot> task, String user_name, String user_age) {
@@ -239,6 +273,7 @@ public class SetupActivity extends AppCompatActivity {
         Map<String,String> userMap = new HashMap<>();
         userMap.put("name", user_name);
         userMap.put("age", user_age);
+        userMap.put("gender", gender);
         userMap.put("image", download_uri.toString());
 
         firebaseFirestore.collection("Users").document(user_id).set(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {

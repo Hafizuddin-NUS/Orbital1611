@@ -11,6 +11,9 @@
         android:id="@+id/action_settings_btn"
         android:title="@string/account_settings_text" />
     <item
+        android:id="@+id/exercise_settings"
+        android:title="Exercise Settings" />
+    <item
         android:id="@+id/action_logout_btn"
         android:title="@string/log_out" />
 </menu>

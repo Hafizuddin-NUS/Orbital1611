@@ -3,8 +3,10 @@ Orbital
 
 
 Features:
-1. Recommended Exercises (sample version done) -timer added
-2. Custom Exercises
-3. IPPT Trial
-4. Calender Plan (on-going)
-5. Running GPS enabled 
+1. Recommended Exercises (sample version done) -DONE
+2. HIIT/TABATA - DONE
+3. IPPT Trial (ZERO CODE)
+4. Calender Plan (SAME HERE ZERO)
+5. FIT-GRAM - LEFT COMMENTS 
+6. Authentication/ user - DONE
+
