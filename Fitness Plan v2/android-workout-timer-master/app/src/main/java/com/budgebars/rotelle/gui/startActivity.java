@@ -49,11 +49,11 @@ public class startActivity extends AppCompatActivity {
         mainToolbar = (Toolbar) findViewById(R.id.mainbar);
         setSupportActionBar(mainToolbar);
 
-        getSupportActionBar().setTitle("Fit-gram");
+        getSupportActionBar().setTitle("Fitness Plan");
 
         if(mAuth.getCurrentUser() != null) {
 
-            mainbottomNav = findViewById(R.id.main_bttm_nav);;
+            mainbottomNav = findViewById(R.id.main_btm_bar);
 
             // FRAGMENTS
             homeFragment = new HomeFragment();
@@ -75,7 +75,7 @@ public class startActivity extends AppCompatActivity {
                             replaceFragment(homeFragment);
                             return true;
 
-                        case R.id.account:
+                        case R.id.others:
 
                             replaceFragment(accountFragment);
                             return true;

@@ -19,6 +19,7 @@ public class NotificationFragment extends Fragment {
     Button btnHome,btnGym,btnhiit;
 
 
+
     public NotificationFragment() {
         // Required empty public constructor
     }

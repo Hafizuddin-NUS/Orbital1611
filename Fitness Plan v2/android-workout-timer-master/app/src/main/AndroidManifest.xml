@@ -29,7 +29,6 @@
         <activity android:name=".gui.ViewExercises" />
         <activity android:name=".gui.RecommendedList" />
         <activity android:name=".gui.LoginActivity" />
-        <activity android:name=".gui.Main2Activity" />
         <activity android:name=".gui.EditExerciseActivity" />
         <activity android:name=".gui.RegisterActivity" />
         <activity android:name=".gui.SetupActivity" />
@@ -63,7 +62,7 @@
         </provider>
 
         <activity android:name=".gui.MainActivity" />
-        <activity android:name=".gui.NewPostActivity"></activity>
+        <activity android:name=".gui.NewPostActivity" />
     </application>
 
 </manifest>

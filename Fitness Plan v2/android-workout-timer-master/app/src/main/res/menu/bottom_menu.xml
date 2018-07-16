@@ -8,14 +8,14 @@
         android:title="@string/bottom_home_text"
         android:visible="true" />
     <item
-        android:id="@+id/account"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:title="Account"
-        android:visible="true" />
-    <item
         android:id="@+id/notification"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="Exercises"
+        android:visible="true" />
+    <item
+        android:id="@+id/others"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="Others"
         android:visible="true" />
 
 </menu>

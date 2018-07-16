@@ -7,17 +7,17 @@
     tools:context=".gui.RecommendedList">
 
     <ListView
-        android:id="@+id/abslist"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="50dp"
+        android:id="@+id/abslist2"
+        android:layout_width="321dp"
+        android:layout_height="424dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.282" />
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_abs"
+        android:title="Abs" />
+    <item
+        android:id="@+id/action_str"
+        android:title="Strength" />
+    <item
+        android:id="@+id/action_cardio"
+        android:title="Cardio" />
+</menu>

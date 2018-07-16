@@ -4,45 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@raw/background"
     tools:context=".gui.ListHome">
 
-    <Button
-        android:id="@+id/btnabs"
-        android:layout_width="match_parent"
-        android:layout_height="109dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="140dp"
-        android:background="@raw/abs"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/exercise_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnstrength"
-        android:layout_width="match_parent"
-        android:layout_height="109dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@raw/strength"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/exercise_btm_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnabs" />
+        app:menu="@menu/exercise_btm_menu" />
 
-    <Button
-        android:id="@+id/btncardio"
-        android:layout_width="match_parent"
-        android:layout_height="109dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@raw/cardio"
+    <FrameLayout
+        android:id="@+id/main_container2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/exercise_btm_bar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnstrength" />
+        app:layout_constraintTop_toBottomOf="@+id/exercise_toolbar">
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>
