@@ -21,8 +21,9 @@ public class ListHome extends AppCompatActivity {
     private Toolbar mainToolbar;
     private BottomNavigationView mainbottomNav;
     private AbsFragment absFragment;
-    private NotificationFragment notificationFragment;
-    private AccountFragment accountFragment;
+    private CardioFragment cardioFragment;
+    private StrFragment strFragment;
+    private int mode;
 
 
     @Override
@@ -33,6 +34,7 @@ public class ListHome extends AppCompatActivity {
         //btnabs = findViewById(R.id.btnabs);
       //  btnstrength = findViewById(R.id.btnstrength);
         //btncardio = findViewById(R.id.btncardio);
+        mode = getIntent().getIntExtra("mode",1);
         mainToolbar = findViewById(R.id.exercise_toolbar);
         setSupportActionBar(mainToolbar);
         getSupportActionBar().setTitle("Exercise Mode");
@@ -66,8 +68,8 @@ public class ListHome extends AppCompatActivity {
 
         // FRAGMENTS
         absFragment = new AbsFragment();
-        notificationFragment = new NotificationFragment();
-        accountFragment = new AccountFragment();
+        cardioFragment = new CardioFragment();
+        strFragment = new StrFragment();
 
         initializeFragment();
 
@@ -86,12 +88,12 @@ public class ListHome extends AppCompatActivity {
 
                     case R.id.action_str:
 
-                        replaceFragment(accountFragment);
+                        replaceFragment(strFragment);
                         return true;
 
                     case R.id.action_cardio:
 
-                        replaceFragment(notificationFragment);
+                        replaceFragment(cardioFragment);
                         return true;
 
                     default:
@@ -145,11 +147,11 @@ public class ListHome extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
         fragmentTransaction.add(R.id.main_container2, absFragment);
-        fragmentTransaction.add(R.id.main_container2, notificationFragment);
-        fragmentTransaction.add(R.id.main_container2, accountFragment);
+        fragmentTransaction.add(R.id.main_container2, cardioFragment);
+        fragmentTransaction.add(R.id.main_container2, strFragment);
 
-        fragmentTransaction.hide(notificationFragment);
-        fragmentTransaction.hide(accountFragment);
+        fragmentTransaction.hide(cardioFragment);
+        fragmentTransaction.hide(strFragment);
 
         fragmentTransaction.commit();
 
@@ -160,22 +162,22 @@ public class ListHome extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         if(fragment == absFragment){
 
-            fragmentTransaction.hide(accountFragment);
-            fragmentTransaction.hide(notificationFragment);
+            fragmentTransaction.hide(strFragment);
+            fragmentTransaction.hide(cardioFragment);
 
         }
 
-        if(fragment == accountFragment){
+        if(fragment == strFragment){
 
             fragmentTransaction.hide(absFragment);
-            fragmentTransaction.hide(notificationFragment);
+            fragmentTransaction.hide(cardioFragment);
 
         }
 
-        if(fragment == notificationFragment){
+        if(fragment == cardioFragment){
 
             fragmentTransaction.hide(absFragment);
-            fragmentTransaction.hide(accountFragment);
+            fragmentTransaction.hide(strFragment);
 
         }
         fragmentTransaction.show(fragment);
@@ -184,4 +186,9 @@ public class ListHome extends AppCompatActivity {
         fragmentTransaction.commit();
 
     }
+
+    public int getMode() {
+        return mode;
+    }
+
 }

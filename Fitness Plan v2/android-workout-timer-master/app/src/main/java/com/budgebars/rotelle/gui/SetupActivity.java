@@ -55,6 +55,7 @@ public class SetupActivity extends AppCompatActivity {
     private String user_id;
     private String gender;
 
+
     private boolean isChanged = false;
 
     private EditText setupName;
@@ -62,6 +63,8 @@ public class SetupActivity extends AppCompatActivity {
     private EditText setupAge;
     private ProgressBar setupProgress;
     private TextView setupGender;
+    private TextView setupPoints;
+    private TextView setupIppt;
 
     private StorageReference storageReference;
     private FirebaseAuth firebaseAuth;
@@ -91,6 +94,8 @@ public class SetupActivity extends AppCompatActivity {
         setupBtn = findViewById(R.id.save_Acc_settings);
         setupProgress = findViewById(R.id.setupbar2);
         setupGender = findViewById(R.id.gender_user);
+        setupPoints = findViewById(R.id.points_count);
+        setupIppt = findViewById(R.id.setup_ippt);
 
         setupProgress.setVisibility(View.VISIBLE);
         setupBtn.setEnabled(false);
@@ -130,12 +135,16 @@ public class SetupActivity extends AppCompatActivity {
                         String image = task.getResult().getString("image");
                         String age = task.getResult().getString("age");
                         String gender1 = task.getResult().getString("gender");
+                        String points = task.getResult().getString("points");
+                        String ippt = task.getResult().getString("ippt");
 
                         mainImageURI = Uri.parse(image);
 
                         setupName.setText(name);
                         setupAge.setText(age);
+                        setupIppt.setText(ippt);
                         setupGender.setText(gender1);
+                        setupPoints.setText(points);
 
                         RequestOptions placeholderRequest = new RequestOptions();
                         placeholderRequest.placeholder(R.drawable.default_image);
@@ -164,6 +173,8 @@ public class SetupActivity extends AppCompatActivity {
 
                 final String user_name = setupName.getText().toString();
                 final String user_age = setupAge.getText().toString();
+                final String user_points = setupPoints.getText().toString();
+                final String user_ippt = setupIppt.getText().toString();
 
                 if (!TextUtils.isEmpty(user_name) && mainImageURI != null) {
 
@@ -197,7 +208,7 @@ public class SetupActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
                                 if (task.isSuccessful()) {
-                                    storeFirestore(task, user_name, user_age);
+                                    storeFirestore(task, user_name, user_age, user_points,user_ippt);
 
                                 } else {
 
@@ -212,7 +223,7 @@ public class SetupActivity extends AppCompatActivity {
 
                     } else {
 
-                        storeFirestore(null, user_name, user_age);
+                        storeFirestore(null, user_name, user_age, user_points,user_ippt);
                         Toast.makeText(SetupActivity.this, "(Error) : " , Toast.LENGTH_LONG).show();
 
                     }
@@ -256,7 +267,7 @@ public class SetupActivity extends AppCompatActivity {
 
     }
 
-    private void storeFirestore(@NonNull Task<UploadTask.TaskSnapshot> task, String user_name, String user_age) {
+    private void storeFirestore(@NonNull Task<UploadTask.TaskSnapshot> task, String user_name, String user_age, String user_points, String user_ippt) {
 
         Uri download_uri;
 
@@ -274,6 +285,8 @@ public class SetupActivity extends AppCompatActivity {
         userMap.put("name", user_name);
         userMap.put("age", user_age);
         userMap.put("gender", gender);
+        userMap.put("points", user_points);
+        userMap.put("ippt", user_ippt);
         userMap.put("image", download_uri.toString());
 
         firebaseFirestore.collection("Users").document(user_id).set(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {

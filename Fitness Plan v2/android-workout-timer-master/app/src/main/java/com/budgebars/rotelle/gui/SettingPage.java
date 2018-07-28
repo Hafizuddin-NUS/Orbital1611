@@ -1,6 +1,7 @@
 package com.budgebars.rotelle.gui;
 
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -59,12 +60,23 @@ public class SettingPage extends AppCompatActivity {
 
     private void saveWorkoutMode() {
         int selectID = group.getCheckedRadioButtonId();
-        if(selectID == easy.getId())
+        SharedPreferences.Editor editor = getSharedPreferences("workout", MODE_PRIVATE).edit();
+        if(selectID == easy.getId()) {
             fitnessPlanDB.saveSettingMode(0);
-        else if(selectID == medium.getId())
+            editor.putInt("difficulty", 0);
+            editor.commit();
+        }
+        else if(selectID == medium.getId()) {
             fitnessPlanDB.saveSettingMode(1);
-        else if(selectID == hard.getId())
+            editor.putInt("difficulty", 1);
+            editor.commit();
+        }
+        else if(selectID == hard.getId()) {
             fitnessPlanDB.saveSettingMode(2);
+            editor.putInt("difficulty", 2);
+            editor.commit();
+        }
+
     }
 
     private void setRadioButton(int mode) {

@@ -32,11 +32,11 @@ public class startActivity extends AppCompatActivity {
 
     private BottomNavigationView mainbottomNav;
 
-    private FloatingActionButton addPostBtn;
+   // private FloatingActionButton addPostBtn;
 
+    private SocialFragment socialFragment;
     private HomeFragment homeFragment;
-    private NotificationFragment notificationFragment;
-    private AccountFragment accountFragment;
+    private IpptFragment ipptFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +56,9 @@ public class startActivity extends AppCompatActivity {
             mainbottomNav = findViewById(R.id.main_btm_bar);
 
             // FRAGMENTS
+            socialFragment = new SocialFragment();
             homeFragment = new HomeFragment();
-            notificationFragment = new NotificationFragment();
-            accountFragment = new AccountFragment();
+            ipptFragment = new IpptFragment();
 
             initializeFragment();
 
@@ -75,14 +75,14 @@ public class startActivity extends AppCompatActivity {
                             replaceFragment(homeFragment);
                             return true;
 
-                        case R.id.others:
+                        case R.id.ippt:
 
-                            replaceFragment(accountFragment);
+                            replaceFragment(ipptFragment);
                             return true;
 
-                        case R.id.notification:
+                        case R.id.social:
 
-                            replaceFragment(notificationFragment);
+                            replaceFragment(socialFragment);
                             return true;
 
                         default:
@@ -95,7 +95,7 @@ public class startActivity extends AppCompatActivity {
             });
 
 
-            addPostBtn = findViewById(R.id.add_post_btn);
+            /*addPostBtn = findViewById(R.id.add_post_btn);
             addPostBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -104,7 +104,7 @@ public class startActivity extends AppCompatActivity {
                     startActivity(newPostIntent);
 
                 }
-            });
+            }); */
 
         }
 
@@ -205,11 +205,11 @@ public class startActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
         fragmentTransaction.add(R.id.main_container, homeFragment);
-        fragmentTransaction.add(R.id.main_container, notificationFragment);
-        fragmentTransaction.add(R.id.main_container, accountFragment);
+        fragmentTransaction.add(R.id.main_container, socialFragment);
+        fragmentTransaction.add(R.id.main_container, ipptFragment);
 
-        fragmentTransaction.hide(notificationFragment);
-        fragmentTransaction.hide(accountFragment);
+        fragmentTransaction.hide(socialFragment);
+        fragmentTransaction.hide(ipptFragment);
 
         fragmentTransaction.commit();
 
@@ -220,22 +220,22 @@ public class startActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         if(fragment == homeFragment){
 
-            fragmentTransaction.hide(accountFragment);
-            fragmentTransaction.hide(notificationFragment);
+            fragmentTransaction.hide(ipptFragment);
+            fragmentTransaction.hide(socialFragment);
 
         }
 
-        if(fragment == accountFragment){
+        if(fragment == ipptFragment){
 
             fragmentTransaction.hide(homeFragment);
-            fragmentTransaction.hide(notificationFragment);
+            fragmentTransaction.hide(socialFragment);
 
         }
 
-        if(fragment == notificationFragment){
+        if(fragment == socialFragment){
 
             fragmentTransaction.hide(homeFragment);
-            fragmentTransaction.hide(accountFragment);
+            fragmentTransaction.hide(ipptFragment);
 
         }
         fragmentTransaction.show(fragment);

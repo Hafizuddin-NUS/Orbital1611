@@ -4,11 +4,14 @@
 
     <item
         android:id="@+id/action_abs"
+        android:icon="@drawable/absicon"
         android:title="Abs" />
     <item
         android:id="@+id/action_str"
+        android:icon="@drawable/stricon"
         android:title="Strength" />
     <item
         android:id="@+id/action_cardio"
+        android:icon="@drawable/runningicon"
         android:title="Cardio" />
 </menu>

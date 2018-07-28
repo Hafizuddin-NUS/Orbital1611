@@ -20,7 +20,8 @@ import com.budgebars.rotelle.R;
  */
 public class AbsFragment extends Fragment {
 
-    String[] listviewitemsAbs = {"Abs Exercise 1", "Abs Exercise 2", "Abs Exercise 3"};
+    String[] listviewitemsAbs = {"Bent Leg Oblique Twist- Left", "Bent Leg Oblique Twist- Right", "Bicycle -Core", "Cross Crunch to Toe", "Forearm Plank", "Laying Straight Leg Raise","Push Up Side Plank - Left", "Push Up Side Plank - Right",
+            "Reverse Crunch", "Russian Twist", "Seated Bicycle", "Sit-up" ,"Toe Touches" , "V-ups"};
     ListView absList;
     ListAdapter adapter;
 

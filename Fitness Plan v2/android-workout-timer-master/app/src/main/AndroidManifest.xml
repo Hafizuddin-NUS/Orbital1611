@@ -63,6 +63,7 @@
 
         <activity android:name=".gui.MainActivity" />
         <activity android:name=".gui.NewPostActivity" />
+        <activity android:name=".gui.CommentsActivity"></activity>
     </application>
 
 </manifest>
