@@ -43,7 +43,7 @@ public class IpptFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private Uri mainImageURI = null;
 
-    private int pushupNum, situpNum, ageNum;
+    private int pushupNum, situpNum, ageNum=0;
     private double runTime;
     private String name,image,age3,user_points,gender2,user_ippt;
 
@@ -92,9 +92,8 @@ public class IpptFragment extends Fragment {
                     age.setText(age3);
                     gender.setText(gender2);
                     previous_points.setText(user_ippt);
-                    ageNum = Integer.parseInt(age3);
+                    //ageNum = Integer.parseInt(age3);
 
-                    mainImageURI = Uri.parse(image);
 
                 } else {
 
@@ -111,6 +110,8 @@ public class IpptFragment extends Fragment {
                 situpNum = Integer.parseInt(situps.getText().toString());
                 pushupNum = Integer.parseInt(pushups.getText().toString());
                 runTime = Double.parseDouble(runTiming.getText().toString());
+                ageNum = Integer.parseInt(age.getText().toString());
+                mainImageURI = Uri.parse(image);
 
                 ipptCalculator.computeScore(pushupNum,situpNum,runTime,gender2,ageNum);
                 finalPoints.setText(Integer.toString(ipptCalculator.getTotalScore()));
