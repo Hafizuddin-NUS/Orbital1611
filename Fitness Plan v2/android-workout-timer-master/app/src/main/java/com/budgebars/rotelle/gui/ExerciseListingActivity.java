@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.support.v7.widget.Toolbar;
 
 import com.budgebars.rotelle.R;
 import com.budgebars.rotelle.files.ExerciseFile;
@@ -25,12 +26,20 @@ public class ExerciseListingActivity extends AppCompatActivity {
 
   public static final String EXERCISE_TO_RUN = "EXERCISE_TO_RUN";
 
+  private Toolbar toolbar;
+
   private FileAdapter adapter;
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     this.setContentView(R.layout.activity_exercise_listing);
+
+      toolbar = (Toolbar) findViewById(R.id.exercise_listingbar);
+
+      setSupportActionBar(toolbar);
+
+      getSupportActionBar().setTitle("Fitness Plan - Interval Training List");
 
     InternalFileManager files = new InternalFileManager(this);
     if (!files.hasExercisesDirectory()) {

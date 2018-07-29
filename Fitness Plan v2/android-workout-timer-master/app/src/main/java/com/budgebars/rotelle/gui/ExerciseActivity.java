@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.budgebars.rotelle.R;
 import com.budgebars.rotelle.files.ExerciseFile;
@@ -30,6 +31,7 @@ public class ExerciseActivity extends AppCompatActivity {
   private ExerciseFile exerciseFile;
 
   private Exercise exercise;
+  private Toolbar toolbar;
 
   @Override
   protected void onCreate(final Bundle savedInstanceState) {
@@ -42,6 +44,10 @@ public class ExerciseActivity extends AppCompatActivity {
     this.exercise = this.exerciseFile.getExercise();
 
     this.setTitle(this.exercise.name() + " (" + this.exercise.totalLength() + ") ");
+
+    toolbar = (Toolbar) findViewById(R.id.exercise_startbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setTitle("Fitness Plan - Interval Training");
 
     ListView list = this.findViewById(R.id.ExerciseDisplayView);
     list.setAdapter(new IntervalAdapter(this.exercise, this));

@@ -49,7 +49,7 @@ public class startActivity extends AppCompatActivity {
         mainToolbar = (Toolbar) findViewById(R.id.mainbar);
         setSupportActionBar(mainToolbar);
 
-        getSupportActionBar().setTitle("Fitness Plan");
+        getSupportActionBar().setTitle("  ");
 
         if(mAuth.getCurrentUser() != null) {
 
@@ -73,16 +73,19 @@ public class startActivity extends AppCompatActivity {
                         case R.id.home:
 
                             replaceFragment(homeFragment);
+                            getSupportActionBar().setTitle("  ");
                             return true;
 
                         case R.id.ippt:
 
                             replaceFragment(ipptFragment);
+                            getSupportActionBar().setTitle("Fitness Plan - IPPT");
                             return true;
 
                         case R.id.social:
 
                             replaceFragment(socialFragment);
+                            getSupportActionBar().setTitle("Fitness Plan - Social");
                             return true;
 
                         default:

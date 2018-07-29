@@ -37,7 +37,10 @@ public class ListHome extends AppCompatActivity {
         mode = getIntent().getIntExtra("mode",1);
         mainToolbar = findViewById(R.id.exercise_toolbar);
         setSupportActionBar(mainToolbar);
-        getSupportActionBar().setTitle("Exercise Mode");
+        if(mode ==1)
+            getSupportActionBar().setTitle("Exercise Mode - Home");
+        else
+            getSupportActionBar().setTitle("Exercise Mode - Gym");
 /*
         btnabs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,16 +86,28 @@ public class ListHome extends AppCompatActivity {
 
                     case R.id.action_abs:
 
+                        if(mode ==1)
+                            getSupportActionBar().setTitle("Exercise Mode - Home");
+                        else
+                            getSupportActionBar().setTitle("Exercise Mode - Gym");
                         replaceFragment(absFragment);
                         return true;
 
                     case R.id.action_str:
 
+                        if(mode ==1)
+                            getSupportActionBar().setTitle("Exercise Mode - Home");
+                        else
+                            getSupportActionBar().setTitle("Exercise Mode - Gym");
                         replaceFragment(strFragment);
                         return true;
 
                     case R.id.action_cardio:
 
+                        if(mode ==1)
+                            getSupportActionBar().setTitle("Exercise Mode - Home");
+                        else
+                            getSupportActionBar().setTitle("Exercise Mode - Gym");
                         replaceFragment(cardioFragment);
                         return true;
 

@@ -2,6 +2,7 @@ package com.budgebars.rotelle.gui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ public class ViewExercises extends AppCompatActivity {
     GifImageView detail_image;
 
     Boolean isRunning = false;
+    private MediaPlayer closingBell;
 
     FitnessPlanDB fitnessPlanDB;
 
@@ -45,6 +47,7 @@ public class ViewExercises extends AppCompatActivity {
         title = (TextView)findViewById(R.id.title);
         detail_image = findViewById(R.id.detail_img);
         btnStart = (Button)findViewById(R.id.btnStart);
+        closingBell = MediaPlayer.create(this, R.raw.closing_bell_trimmed);
 
 
         btnStart.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +74,7 @@ public class ViewExercises extends AppCompatActivity {
 
                         @Override
                         public void onFinish() {
+                            closingBell.start();
                             Toast.makeText(ViewExercises.this, "Finish!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(ViewExercises.this, HomeGym.class);
 
@@ -320,6 +324,13 @@ public class ViewExercises extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+       closingBell.release();
+       closingBell = null;
     }
 
 

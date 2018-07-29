@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.support.v7.widget.Toolbar;
 
 import com.budgebars.rotelle.R;
 import com.budgebars.rotelle.files.IncomingFileManager;
@@ -34,6 +35,8 @@ public class EditExerciseActivity extends AppCompatActivity {
 
   private static final String CANCEL_LABEL = "Cancel";
 
+  private Toolbar toolbar;
+
   private EditableExercise editableExercise;
 
   private EditIntervalAdapter adapter;
@@ -42,6 +45,11 @@ public class EditExerciseActivity extends AppCompatActivity {
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     this.setContentView(R.layout.activity_edit_exercise);
+
+    toolbar = (Toolbar) findViewById(R.id.exercise_editbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setTitle("Fitness Plan - Interval Training (EDIT)");
+
 
     Intent intent = this.getIntent();
     if ((intent.getScheme() != null)
