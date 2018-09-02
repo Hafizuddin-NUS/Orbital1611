@@ -107,6 +107,7 @@ public class EditExerciseActivity extends AppCompatActivity {
             currentFocus.clearFocus();
           }
           saveButton.requestFocus();
+          finish();
 
           if (EditExerciseActivity.this.isTitleEmpty()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(EditExerciseActivity.this);

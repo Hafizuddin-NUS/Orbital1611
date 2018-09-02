@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".gui.startActivity">
+        <activity android:name=".gui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,7 +63,8 @@
 
         <activity android:name=".gui.MainActivity" />
         <activity android:name=".gui.NewPostActivity" />
-        <activity android:name=".gui.CommentsActivity"></activity>
+        <activity android:name=".gui.CommentsActivity" />
+        <activity android:name=".gui.startActivity"></activity>
     </application>
 
 </manifest>

@@ -146,7 +146,22 @@ public class ListHome extends AppCompatActivity {
 
                 Intent exerciseIntent = new Intent(ListHome.this, SettingPage.class);
                 startActivity(exerciseIntent);
+                return true;
 
+            case R.id.gym_menu:
+
+                Intent gymIntent = new Intent(ListHome.this, ListHome.class);
+                gymIntent.putExtra("mode",2);
+                startActivity(gymIntent);
+                finish();
+                return true;
+
+            case R.id.home_menu2:
+
+                Intent homeIntent = new Intent(ListHome.this, ListHome.class);
+                homeIntent.putExtra("mode",1);
+                startActivity(homeIntent);
+                finish();
                 return true;
 
             default:

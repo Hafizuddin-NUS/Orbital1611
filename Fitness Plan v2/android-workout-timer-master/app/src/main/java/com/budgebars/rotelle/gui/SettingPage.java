@@ -52,6 +52,7 @@ public class SettingPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveWorkoutMode();
+                finish();
             }
         });
 

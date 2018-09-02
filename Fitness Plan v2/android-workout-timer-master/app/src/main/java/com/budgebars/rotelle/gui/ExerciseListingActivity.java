@@ -75,6 +75,7 @@ public class ExerciseListingActivity extends AppCompatActivity {
         @Override
         public void onClick(final View view) {
             ExerciseListingActivity.this.createExercise();
+            finish();
         }
     });
   }

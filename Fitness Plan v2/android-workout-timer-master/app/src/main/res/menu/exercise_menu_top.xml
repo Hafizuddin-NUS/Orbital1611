@@ -4,9 +4,15 @@
 
     <item
         android:id="@+id/action_home2"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_home_dark"
         android:title="Home"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/home_menu2"
+        android:title="Home Exercises" />
+    <item
+        android:id="@+id/gym_menu"
+        android:title="Gym Exercises" />
     <item
         android:id="@+id/action_exercise_settings2"
         android:title="Exercise Settings" />

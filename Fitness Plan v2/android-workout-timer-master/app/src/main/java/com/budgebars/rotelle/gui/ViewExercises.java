@@ -30,6 +30,7 @@ public class ViewExercises extends AppCompatActivity {
 
     Boolean isRunning = false;
     private MediaPlayer closingBell;
+    private boolean stat=false;
 
     FitnessPlanDB fitnessPlanDB;
 
@@ -56,6 +57,7 @@ public class ViewExercises extends AppCompatActivity {
                 if(!isRunning)
                 {
                     btnStart.setText("Done");
+                    stat = true;
 
                     int timeLimit = 0;
                     if(fitnessPlanDB.getSettingMode() == 0)
@@ -74,26 +76,31 @@ public class ViewExercises extends AppCompatActivity {
 
                         @Override
                         public void onFinish() {
-                            closingBell.start();
-                            Toast.makeText(ViewExercises.this, "Finish!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ViewExercises.this, HomeGym.class);
+                                if(stat) {
+                                    closingBell.start();
+                                    Toast.makeText(ViewExercises.this, "Finish!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(ViewExercises.this, HomeGym.class);
 
-                            //save String for workout done
-                            SharedPreferences preferences = getSharedPreferences("workout", getApplicationContext().MODE_PRIVATE);
-                            SharedPreferences.Editor editor = getSharedPreferences("workout", MODE_PRIVATE).edit();
+                                    //save String for workout done
+                                    SharedPreferences preferences = getSharedPreferences("workout", getApplicationContext().MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = getSharedPreferences("workout", MODE_PRIVATE).edit();
 
-                            String workout_done = preferences.getString("names","Exercise Done: ");
-                            workout_done = workout_done + name + ", ";
-                            editor.putString("names", workout_done);
-                            editor.commit();
-                            startActivity(intent);
-                            finish();
+                                    String workout_done = preferences.getString("names", "Exercise Done: ");
+                                    workout_done = workout_done + name + ", ";
+                                    editor.putString("names", workout_done);
+                                    editor.commit();
+                                    startActivity(intent);
+                                    finish();
+                                }
+
                         }
                     }.start();
+
                 }
                 else
                 {
-                    Toast.makeText(ViewExercises.this, "Finish!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewExercises.this, "Cancelled", Toast.LENGTH_SHORT).show();
+                    stat = false;
                     finish();
                 }
 
@@ -325,13 +332,14 @@ public class ViewExercises extends AppCompatActivity {
 
 
     }
+    /*
     @Override
     protected void onStop() {
         super.onStop();
 
        closingBell.release();
        closingBell = null;
-    }
+    }*/
 
 
 }
